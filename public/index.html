@@ -1,77 +1,126 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>NoteTaker</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style media="screen">
-      body {
-        text-align: center;
-        background-color: cornflowerblue;
-      }
-      h1 {
-        font-size: 40px;
-        color: white;
-      }
-      .deleter {
-        margin-left: 20px;
-        color: red;
-        cursor: pointer;
-        text-align: right;
-      }
-      input {
-        width: 400px;
-        height: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 42px;
-        background-color: antiquewhite;
-      }
-      textarea {
-        width: 100px;
-        height: 100px;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 24px;
-        background-color: antiquewhite;
+<html>
+<head>
+  <title> Scholarships input form </title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-      }
-      .dataTitle {
-        cursor: pointer;
-        font-size: 24px;
-      }
-      #results {
-        width: 400px;
-        height: 200px;
-        overflow: auto;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: antiquewhite;
-      }
-      #actionbutton {
-        display: inline-block;
-      }
-      #buttons {
-        margin: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to Changing Majors</h1>
-    <div id="userinput">
-        <p>Title</p>
-        <input type="text" id="author" />
-      <br>
-        <p>Please provide your scholarship information here</p>
-        <textarea id="detail"></textarea>
-      <div id="buttons">
-        <div id="actionbutton">
-          <button id="makenew">Submit</button>
-        </div>
-        <!-- <button id="clearall">Delete All scholarship information</button> -->
-      </div>
+</head>
+
+<style>
+#success_message {display:none;}
+</style>
+
+<body>
+
+<div class="container">
+
+    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend> INPUT FORM </legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label"> Organization Name</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"> </span>
+  <input  name="organization_name" placeholder="Organization Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label"> Scholarship Name </label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></span>
+  <input name="scholarship_name" placeholder="Scholarship Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label"> Amount </label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"></span>
+  <input name="amount" placeholder="Stage" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Scroll Option -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label"> Next Action </label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"></i></span>
+    <select name="action" class="form-control selectpicker" >
+      <option value=" " > Next Action </option>
+      <option> apply </option>
+      <option> interview </option>
+      <option> follow up </option>
+      <option> archive </option>
+    </select>
+  </div>
+</div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label"> Posting URL </label>
+   <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"></span>
+  <input name="website" placeholder="Website" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+
+<!-- Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Additional Notes</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"></i></span>
+        	<textarea class="form-control" name="comment" placeholder="Additional Notes"></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message"> Thank you! <i class="glyphicon glyphicon-thumbs-up"></i></div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning"> Submit <span class="glyphicon glyphicon-send"></span></button>
+    <button type="submit" class="btn btn-warning"> Edit <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
     </div>
 
-    <div id="info"></div>
-    <script src="app.js"></script>
-  </body>
+<!-- /.container -->
+
+<!-- //JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src='js/jquery-2.2.3.min.js'></script>
+<script src='js/handlebars-v4.0.11.js'></script>
+<script src='js/scripts.js'></script>
+
+</body>
+</html>

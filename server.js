@@ -1,13 +1,14 @@
-
 // Dependencies
 var express = require("express");
 var mongojs = require("mongojs");
+var MongoClient = require('mongodb').MongoClient,
+assert = require('assert');
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 
 var app = express();
 
-// Set the app up with morgan, body-parser, and a static folder
+// /e/ Set the app up with morgan, body-parser, and a static folder
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
   extended: false
@@ -15,8 +16,43 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration
-var databaseUrl = "changingMajorsDB";
-var collections = ["scholarships"];
+// var databaseUrl = "changingMajorsDB";
+// var collection = db.collection("scholarships");
+// CreateCollection(db, function() {
+//   db.close();
+// });
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  createVaCollection(db, function() {
+    db.close();
+  });
+});
+var CreateCollection = function(db, callback) {
+  db.CreateCollection("scholarships", {
+    'validator': {
+      '$or': [{
+          "organization_name": {
+            '$type': "string"
+          }
+        },
+        {
+          "scholarship_name": {
+            '$type': "string"
+          }
+        },
+        {
+          "amount": {
+            '$type': '$+"string"'
+          }
+        },
+      ]
+    },
+    function (err, results) {
+      console.log("collection created");
+      callback();
+    }
+  })
+};
 // var collections =["scholarships", "users", "career info"]
 
 // Hook mongojs config to db variable
