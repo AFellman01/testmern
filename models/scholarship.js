@@ -4,6 +4,7 @@ const scholarshipSchema = new Schema({
   org: { type: String, required: true },
   name: { type: String, required: true },
   url: { type: String, required: true }
+  // date: { type: }
 });
 const Scholarship = mongoose.model("Scholarship", scholarshipSchema);
 module.exports = Scholarship;
